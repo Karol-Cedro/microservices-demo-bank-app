@@ -23,7 +23,6 @@ public class AccountDto {
     @NotEmpty(message = "AccountType can not be a null or empty")
     private String accountType;
 
-    @Pattern(regexp="(^$|[0-9]{10})",message = "AccountNumber must be 10 digits")
     private Long accountNumber;
 
 }

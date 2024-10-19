@@ -50,8 +50,8 @@ public class AccountServiceImpl implements IAccountService {
         Account account = accountRepository.findByMobileNumber(accountDto.getMobileNumber()).orElseThrow(
                 () -> new ResourceNotFoundException("Account", "MobileNumber", accountDto.getMobileNumber())
         );
-        AccountMapper.mapToAccounts(accountDto, account);
-        accountRepository.save(account);
+        Account updatedAccount = AccountMapper.mapToAccounts(accountDto, account);
+        accountRepository.save(updatedAccount);
         return true;
     }
 
