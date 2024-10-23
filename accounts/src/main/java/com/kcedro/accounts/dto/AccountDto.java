@@ -9,20 +9,19 @@ import lombok.Data;
 @Data
 public class AccountDto {
 
-    @NotEmpty(message = "Customer name cannot be empty")
-    @Size(min = 5, max = 30, message = "Customer name must be between 5 and 30 characters")
+    @NotEmpty(message = "Account name cannot be empty")
+    @Size(min = 5, max = 30, message = "Account name must be between 5 and 30 characters")
     private String name;
 
-    @NotEmpty(message = "Customer email cannot be empty")
+    @NotEmpty(message = "Account name cannot be empty")
+    @Size(min = 5, max = 30, message = "Account name must be between 5 and 30 characters")
+    private String surname;
+
+    @NotEmpty(message = "Account email cannot be empty")
     @Email(message = "Email address should be valid")
     private String email;
 
     @Pattern(regexp = "(^$|[0-9]{10})", message = "Mobile number must be 10 digits")
     private String mobileNumber;
-
-    @NotEmpty(message = "AccountType can not be a null or empty")
-    private String accountType;
-
-    private Long accountNumber;
 
 }

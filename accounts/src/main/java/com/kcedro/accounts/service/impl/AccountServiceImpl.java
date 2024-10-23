@@ -1,5 +1,6 @@
 package com.kcedro.accounts.service.impl;
 
+import com.kcedro.accounts.dto.AccountBalanceDto;
 import com.kcedro.accounts.dto.AccountDto;
 import com.kcedro.accounts.entity.Account;
 import com.kcedro.accounts.exception.AccountAlreadyExistsException;
@@ -33,32 +34,32 @@ public class AccountServiceImpl implements IAccountService {
         long randomAccNumber = 1000000000L + new Random().nextInt(900000000);
 
         newAccount.setAccountNumber(randomAccNumber);
+        newAccount.setBalance(0L);
         return newAccount;
     }
 
     @Override
-    public AccountDto fetchAccount(String mobileNumber) {
-        Account account = accountRepository.findByMobileNumber(mobileNumber).orElseThrow(
-                () -> new ResourceNotFoundException("Account", "mobileNumber", mobileNumber)
+    public Long fetchAccountBalance(Long accountId) {
+        Account account = accountRepository.findById(accountId).orElseThrow(
+                () -> new ResourceNotFoundException("Account", "accountId", accountId)
         );
-        AccountDto accountDto = AccountMapper.mapToAccountsDto(account, new AccountDto());
-        return accountDto;
+        return account.getBalance();
     }
 
     @Override
-    public boolean updateAccount(AccountDto accountDto) {
-        Account account = accountRepository.findByMobileNumber(accountDto.getMobileNumber()).orElseThrow(
-                () -> new ResourceNotFoundException("Account", "MobileNumber", accountDto.getMobileNumber())
+    public boolean updateAccountBalance(AccountBalanceDto accountBalanceDto) {
+        Account account = accountRepository.findById(accountBalanceDto.getAccountId()).orElseThrow(
+                () -> new ResourceNotFoundException("Account", "accountId", accountBalanceDto.getAccountId())
         );
-        Account updatedAccount = AccountMapper.mapToAccounts(accountDto, account);
-        accountRepository.save(updatedAccount);
+        account.setBalance(accountBalanceDto.getBalance());
+        accountRepository.save(account);
         return true;
     }
 
     @Override
-    public boolean deleteAccount(String mobileNumber) {
-        Account account = accountRepository.findByMobileNumber(mobileNumber).orElseThrow(
-                () -> new ResourceNotFoundException("Account", "mobileNumber", mobileNumber)
+    public boolean deleteAccount(Long accountId) {
+        Account account = accountRepository.findById(accountId).orElseThrow(
+                () -> new ResourceNotFoundException("Account", "accountId", accountId)
         );
         accountRepository.deleteByAccountId(account.getAccountId());
         return true;

@@ -26,17 +26,16 @@ public class Account {
 
     private String name;
 
-    private String surname;
-
     private String email;
 
     @Column(name = "mobile_number")
     private String mobileNumber;
 
+    @Column(name = "account_type")
+    private String accountType;
+
     @Column(name = "account_number")
     private Long accountNumber;
-
-    private Long balance;
 
     @CreatedDate
     @Column(updatable = false)

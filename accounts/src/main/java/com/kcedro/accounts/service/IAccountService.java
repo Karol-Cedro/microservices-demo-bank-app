@@ -1,5 +1,6 @@
 package com.kcedro.accounts.service;
 
+import com.kcedro.accounts.dto.AccountBalanceDto;
 import com.kcedro.accounts.dto.AccountDto;
 
 public interface IAccountService {
@@ -7,9 +8,9 @@ public interface IAccountService {
 
     void createAccount(AccountDto accountDto);
 
-    AccountDto fetchAccount(String mobileNumber);
+    Long fetchAccountBalance(Long accountId);
 
-    boolean updateAccount(AccountDto accountDto);
+    boolean updateAccountBalance(AccountBalanceDto accountBalanceDto);
 
-    boolean deleteAccount(String mobileNumber);
+    boolean deleteAccount(Long accountId);
 }
