@@ -10,7 +10,9 @@ public class OperationsController {
 
     }
 
-    public void blockCard(){
+    public void getOperationsHistory(){
 
     }
+
+
 }

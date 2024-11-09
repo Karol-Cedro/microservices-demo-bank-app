@@ -1,10 +1,10 @@
 server:
-  port: 8090
+  port: 9000
 spring:
   application:
-    name: cards
+    name: operations
   datasource:
-    url: jdbc:mysql://cardsdb:3306/cardsdb
+    url: jdbc:mysql://operationsdb:3306/operationsdb
     username: root
     password: root
     driver-class-name: com.mysql.cj.jdbc.Driver

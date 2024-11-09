@@ -1,7 +1,7 @@
 build-all:
-	cd accounts && mvn clean install && \
-	cd ../cards && mvn clean install && \
-	cd ../operations && mvn clean install && \
+	cd accounts && mvn clean install -DskipTests && \
+	cd ../cards && mvn clean install -DskipTests && \
+	cd ../operations && mvn clean install -DskipTests && \
 	cd ..
 
 build-images-all:
@@ -15,3 +15,5 @@ run-all-containers:
 
 stop-all-containers:
 	docker-compose down
+
+all: build-all build-images-all run-all-containers
