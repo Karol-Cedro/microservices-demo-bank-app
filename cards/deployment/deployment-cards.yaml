@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cards-deployment
+spec:
+  replicas: 3  # Initial number of pods
+  selector:
+    matchLabels:
+      app: cards-deployment
+  template:
+    metadata:
+      labels:
+        app: cards-deployment
+    spec:
+      containers:
+        - name: cards-image
+          image: gcr.io/YOUR_PROJECT_ID/service-a:latest
+          ports:
+            - containerPort: 8090

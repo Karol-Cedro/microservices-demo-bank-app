@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: accounts-deployment
+spec:
+  replicas: 3  # Initial number of pods
+  selector:
+    matchLabels:
+      app: accounts-deployment
+  template:
+    metadata:
+      labels:
+        app: accounts-deployment
+    spec:
+      containers:
+        - name: accounts-image
+          image: gcr.io/YOUR_PROJECT_ID/service-a:latest
+          ports:
+            - containerPort: 8080
