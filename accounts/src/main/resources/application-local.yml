@@ -1,0 +1,7 @@
+service:
+  accounts:
+    url: http://localhost:8080
+  cards:
+    url: http://localhost:8090
+  operations:
+    url: http://localhost:9000

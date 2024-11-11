@@ -1,5 +1,6 @@
 package com.kcedro.accounts.service.impl;
 
+import com.kcedro.accounts.configuration.ServiceProperties;
 import com.kcedro.accounts.dto.AccountBalanceDto;
 import com.kcedro.accounts.dto.AccountDto;
 import com.kcedro.accounts.entity.Account;
@@ -19,6 +20,8 @@ import java.util.Random;
 public class AccountServiceImpl implements IAccountService {
 
     private AccountRepository accountRepository;
+
+    private ServiceProperties serviceProperties;
 
     @Override
     public void createAccount(AccountDto accountDto) {

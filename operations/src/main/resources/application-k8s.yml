@@ -1,0 +1,7 @@
+service:
+  accounts:
+    url: http://accounts-service
+  cards:
+    url: http://cards-service
+  operations:
+    url: http://operations-service

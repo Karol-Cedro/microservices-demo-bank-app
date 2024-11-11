@@ -3,6 +3,9 @@ server:
 spring:
   application:
     name: operations
+  profiles:
+    active: local
+  #    active: k8s
   datasource:
     url: jdbc:h2:mem:operationsdb
     driver-class-name: org.h2.Driver
