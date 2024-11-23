@@ -8,9 +8,13 @@ public interface ICardsService {
 
     void createCard(CardDto cardDto);
 
+    void updateCardAvailableAmount(CardDebtDto cardDebtDto);
+
     boolean deleteCard(Long accountId);
 
-    int getAvailableAmount(Long cardId);
+    int getAvailableAmount(Long accountId);
+
+    int getCardLimit(Long accountId);
 
     boolean payDebt(CardDebtDto cardDebtDto);
 }

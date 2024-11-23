@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS `account` (
-    `account_id` int AUTO_INCREMENT  PRIMARY KEY,
+    `account_id` int NOT NULL AUTO_INCREMENT,
     `name` varchar(100) NOT NULL,
     `surname` varchar(100) NOT NULL,
     `email` varchar(100) NOT NULL,
@@ -9,5 +9,9 @@ CREATE TABLE IF NOT EXISTS `account` (
     `created_at` date NOT NULL,
     `created_by` varchar(20) NOT NULL,
     `updated_at` date DEFAULT NULL,
-    `updated_by` varchar(20) DEFAULT NULL
+    `updated_by` varchar(20) DEFAULT NULL,
+    PRIMARY KEY (`account_id`)
     );
+
+INSERT INTO `account` (`name`,`surname`,`email`,`mobile_number`,`account_number`,`balance`,`created_at`,`created_by`)
+    VALUES ('John', 'Doe', 'jondoe@example.com',654321567, 1234590126, 100000, '2022-01-01', 'John');

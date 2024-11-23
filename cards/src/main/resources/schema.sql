@@ -12,3 +12,6 @@ CREATE TABLE IF NOT EXISTS `card` (
     `updated_by` varchar(20) DEFAULT NULL,
     PRIMARY KEY (`card_id`)
     );
+
+INSERT INTO card (owner_name, owner_surname, account_id, card_number, total_limit, available_amount, created_at, created_by)
+VALUES ('John', 'Doe', 1, '1234567890123456', 10000, 10000, '2022-01-01', 'John');

@@ -1,4 +1,4 @@
-package com.kcedro.cards.dto;
+package com.kcedro.operations.dto;
 
 import jakarta.validation.constraints.Positive;
 import lombok.Data;

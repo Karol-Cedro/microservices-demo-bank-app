@@ -19,11 +19,4 @@ public class ServiceProperties {
 
     @Value("${service.operations.url}")
     private String operationUrl;
-
-    @PostConstruct
-    public void printProperties() {
-        System.out.println("Accounts URL: " + accountsUrl);
-        System.out.println("Cards URL: " + cardsUrl);
-        System.out.println("Operations URL: " + operationUrl);
-    }
 }

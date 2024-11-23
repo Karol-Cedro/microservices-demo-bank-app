@@ -40,17 +40,34 @@ public class CardsServiceImpl implements ICardsService {
     }
 
     @Override
-    public int getAvailableAmount(Long cardId) {
-        Card card = cardsRepository.findById(cardId).orElseThrow(
-                () -> new ResourceNotFoundException("Card", "cardId", cardId.toString())
+    public void updateCardAvailableAmount(CardDebtDto cardDebtDto) {
+        Card card = cardsRepository.findByAccountId(cardDebtDto.getAccountId()).orElseThrow(
+                () -> new ResourceNotFoundException("Card", "accountId", cardDebtDto.getAccountId().toString())
+        );
+        card.setAvailableAmount(cardDebtDto.getAmount());
+        cardsRepository.save(card);
+    }
+
+    @Override
+    public int getAvailableAmount(Long accountId) {
+        Card card = cardsRepository.findByAccountId(accountId).orElseThrow(
+                () -> new ResourceNotFoundException("Card", "accountId", accountId.toString())
         );
         return card.getAvailableAmount();
     }
 
     @Override
+    public int getCardLimit(Long accountId) {
+        Card card = cardsRepository.findByAccountId(accountId).orElseThrow(
+                () -> new ResourceNotFoundException("Card", "accountId", accountId.toString())
+        );
+        return card.getTotalLimit();
+    }
+
+    @Override
     public boolean payDebt(CardDebtDto cardDebtDto) {
-        Card card = cardsRepository.findById(cardDebtDto.getCardId()).orElseThrow(
-                () -> new ResourceNotFoundException("Card", "cardId", cardDebtDto.getCardId().toString()));
+        Card card = cardsRepository.findByAccountId(cardDebtDto.getAccountId()).orElseThrow(
+                () -> new ResourceNotFoundException("Card", "accountId", cardDebtDto.getAccountId().toString()));
         card.setAvailableAmount(card.getAvailableAmount() + cardDebtDto.getAmount());
         cardsRepository.save(card);
         return true;
