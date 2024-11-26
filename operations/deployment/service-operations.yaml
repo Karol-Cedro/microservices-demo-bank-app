@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cards-service
+  name: operations-service
 spec:
   selector:
-    app: cards-deployment
+    app: operations-deployment
   ports:
     - protocol: TCP
-      port: 80
+      port: 9000
       targetPort: 9000
   type: ClusterIP

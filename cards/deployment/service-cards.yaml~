@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: accounts-service
+  name: cards-service
 spec:
   selector:
-    app: accounts-deployment
+    app: cards-deployment
   ports:
     - protocol: TCP
-      port: 8080
-      targetPort: 8080
+      port: 80
+      targetPort: 8090
   type: ClusterIP

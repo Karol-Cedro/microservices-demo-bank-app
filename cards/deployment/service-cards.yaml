@@ -7,6 +7,6 @@ spec:
     app: cards-deployment
   ports:
     - protocol: TCP
-      port: 80
+      port: 8090
       targetPort: 8090
   type: ClusterIP

@@ -1,7 +1,7 @@
 service:
   accounts:
-    url: http://accounts-service
+    url: http://accounts-service:8080
   cards:
-    url: http://cards-service
+    url: http://cards-service:8090
   operations:
-    url: http://operations-service
+    url: http://operations-service:9000

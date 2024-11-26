@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: operations-deployment
 spec:
-  replicas: 3  # Initial number of pods
+  replicas: 1  # Initial number of pods
   selector:
     matchLabels:
       app: operations-deployment
@@ -14,6 +14,7 @@ spec:
     spec:
       containers:
         - name: operations-image
-          image: gcr.io/YOUR_PROJECT_ID/service-a:latest
+          image: operations:latest
+          imagePullPolicy: Never
           ports:
             - containerPort: 9000
