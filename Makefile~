@@ -25,9 +25,9 @@ deploy-on-minikube:
 	kubectl apply -f operations/deployment
 
 forward-ports:
-	nohup kubectl port-forward svc/accounts-service 8080:8080 & \
-	nohup kubectl port-forward svc/cards-service 8090:8090 & \
-	nohup kubectl port-forward svc/operations-service 9000:9000 &
+	kubectl port-forward svc/accounts-service 8080:8080 & \
+	kubectl port-forward svc/cards-service 8090:8090 & \
+	kubectl port-forward svc/operations-service 9000:9000 &
 
 delete-from-minikube:
 	kubectl delete -f accounts/deployment && \

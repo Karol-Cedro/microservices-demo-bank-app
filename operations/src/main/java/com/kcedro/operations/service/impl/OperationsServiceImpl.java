@@ -114,10 +114,13 @@ public class OperationsServiceImpl implements IOperationsService {
             accountBalanceDto.setBalance((long) restOfMoney);
             restTemplate.put(accountUpdateBalanceEndpoint, accountBalanceDto, String.class);
         } else if (debt == 0) {
+            String accountAccountBalanceEndpoint = serviceProperties.getAccountsUrl() + "/api/v1/account/get-balance?accountId={accountId}";
+            Long accountActualBalance = restTemplate.getForObject(accountAccountBalanceEndpoint, Long.class, operationDto.getAccountId());
+
             String accountUpdateBalanceEndpoint = serviceProperties.getAccountsUrl() + "/api/v1/account/update-balance";
             AccountBalanceDto accountBalanceDto = new AccountBalanceDto();
             accountBalanceDto.setAccountId(operationDto.getAccountId());
-            accountBalanceDto.setBalance((long) operationDto.getOperationAmount());
+            accountBalanceDto.setBalance(accountActualBalance + operationDto.getOperationAmount());
             restTemplate.put(accountUpdateBalanceEndpoint, accountBalanceDto, String.class);
         }
 

@@ -24,6 +24,11 @@ deploy-on-minikube:
 	kubectl apply -f cards/deployment && \
 	kubectl apply -f operations/deployment
 
+clear-ports:
+	sudo lsof -i :8080 -t | xargs sudo kill -9 && \
+	sudo lsof -i :8090 -t | xargs sudo kill -9 && \
+	sudo lsof -i :9000 -t | xargs sudo kill -9
+
 forward-ports:
 	kubectl port-forward svc/accounts-service 8080:8080 & \
 	kubectl port-forward svc/cards-service 8090:8090 & \
