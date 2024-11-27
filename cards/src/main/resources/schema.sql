@@ -15,3 +15,9 @@ CREATE TABLE IF NOT EXISTS `card` (
 
 INSERT INTO card (owner_name, owner_surname, account_id, card_number, total_limit, available_amount, created_at, created_by)
 VALUES ('John', 'Doe', 1, '1234567890123456', 10000, 10000, '2022-01-01', 'John');
+
+INSERT INTO card (owner_name, owner_surname, account_id, card_number, total_limit, available_amount, created_at, created_by)
+VALUES ('Jakub', 'Kowalski', 2, '3334567890123456', 10000, 10000, '2022-01-01', 'Jakub');
+
+INSERT INTO card (owner_name, owner_surname, account_id, card_number, total_limit, available_amount, created_at, created_by)
+VALUES ('Kacper', 'Szczepanowski', 3, '5534567890123456', 10000, 10000, '2022-01-01', 'Kacper');
